@@ -35,8 +35,17 @@ public class paincikk extends javax.swing.JFrame {
         graphics2D.fillRect(0, 0, 800, 600);
         tempCanvas = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
         tempGraphics2D = tempCanvas.createGraphics();
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() 
+        {
+        public void mouseClicked(java.awt.event.MouseEvent evt){
+            Color selectedColor = JColorChooser.showDialog(null, "Wybierz kolor", brushColor);
+            if (selectedColor != null) {
+                brushColor = selectedColor;
+                jTextField2.setBackground(brushColor);
+        }
     }
-
+});
+}
     private void initComponents() {
         jTextField1 = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -180,14 +189,6 @@ public class paincikk extends javax.swing.JFrame {
 
         pack();
         setMinimumSize(new java.awt.Dimension(400, 400));
-    }
-
-    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {
-        Color selectedColor = JColorChooser.showDialog(this, "Wybierz kolor", brushColor);
-        if (selectedColor != null) {
-            brushColor = selectedColor;
-            jTextField2.setBackground(brushColor);
-        }
     }
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {
@@ -422,4 +423,5 @@ public class paincikk extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+
 }
